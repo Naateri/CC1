@@ -111,5 +111,3 @@ main()
 }
 
 
-#ccomp2
-# ccomp2
