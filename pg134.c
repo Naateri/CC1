@@ -16,26 +16,29 @@ struct key{
 	"while", 0,
 };
 
-int binsearch(char *word, struct key *tab, int n){
+struct key *binsearch(char *word, struct key *tab, int n){
 	int cond;
 	int cont;
-	int low, mid, high;
+	struct key *low = &tab[0];
+	struct key *high = &tab[n];
+	struct key *mid;
 	cont = 0;
-	low = 0;
-	high = n-1;
-	while (low <= high){
-		mid = (low+high)/2;
-		while (cont < mid){
+	/*low = 0;
+	high = n-1;*/
+	while (low < high){
+		mid = low + (high-low)/2;
+		/*while (cont < mid){
 			cont++;
 			*tab++;
-		}
-		if ((cond=strcmp(word, *tab.word))<0){
-			high = mid - 1;
-		} else if (cond > 0){
-			low = mid + 1;
+		*/
+		if ((cond = strcmp(word, mid -> word)) < 0)
+			high = mid;
+		} else if (cond > 0) {
+		low = mid + 1;
 		} else {
-			return mid;
-		}
+		return mid;
+	}
+		
 	}
 	return -1;
 }
