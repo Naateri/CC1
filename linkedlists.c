@@ -5,12 +5,13 @@ struct node {
 	struct node *next;
 };
 
-void insertb(int val, struct node *head){
+struct node * insertb(int val, struct node *head){
 	struct node *prev;
 	prev = malloc(sizeof(struct node));
 	prev -> val = val;
 	prev -> next = head;
 	head = prev;
+	return head;
 }
 
 void insertmiddle(int pos, int val, struct node *head){
@@ -130,7 +131,7 @@ main() {
 	insertmiddle(2, 3, head);
 	imprimirlist(head);
 	printf("\nInsertando un 1 al comienzo(ARREGLAR): \n");
-	insertb(1, head);
+	head = insertb(1, head);
 	imprimirlist(head);
 	printf("\nConcatenando la primera lista con la segunda:\n");
 	concatenarlist(head, head2);
