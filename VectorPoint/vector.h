@@ -1,5 +1,4 @@
 #include<iostream>
-//#include "point.h"
 
 class Vector{
 private:
@@ -11,8 +10,12 @@ public:
 	void printVector();
 	void modifyVectorStart(int nx, int ny);
 	void modifyVectorEnd(int nx, int ny);
-	double distancia(Point Start1, Point End1);
-	
-	
-	
+	double distancia();
+	void setStart(int nx, int ny);
+	void setEnd(int nx, int ny);
+	int getStartX();
+	int getStartY();
+	int getEndX();
+	int getEndY();
+	void modifyVector(Point Start1, Point End1);
 };
