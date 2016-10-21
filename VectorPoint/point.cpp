@@ -10,6 +10,8 @@ Point::Point(int nx, int ny){
 	}
 Point::Point(Point &o){
 	x = o.x; y = o.y;
+	//setx(o.getx());
+	//sety(o.gety());
 }
 void Point::setx(int nx){
 		x = nx;
