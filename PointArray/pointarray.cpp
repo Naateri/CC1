@@ -90,3 +90,19 @@ void PointArray::clear(){
 	sizee = 0;
 	delete[] point;
 }
+void PointArray::printArray(){
+	if (sizee == 0){
+		cout << "There is no list" << endl;
+	} else {
+		int i;
+		Point P(0,0);
+		cout << "Lista: " << endl;
+		for (i=0; i<sizee; i++){
+			Point P(point[i]);
+		//cout << "[ ";
+			P.printPoint();
+		//cout << ", ";
+		}
+	}
+}
+
