@@ -21,4 +21,5 @@ public:
 	void remove(int position);
 	int getSize();
 	void clear();
+	void printArray();
 };
