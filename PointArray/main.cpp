@@ -1,6 +1,7 @@
 #include<iostream>
 #include "point.h"
 #include "pointarray.h"
+#include "polygon.h"
 using namespace std;
 
 int main () {
