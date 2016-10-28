@@ -16,8 +16,11 @@ int main () {
 	cout << L1.getSize() << endl;
 	L1.push_back(D);
 	cout << L1.getSize() << endl;
-	L1.insert(2, E); // FIX
-	//cout << L1.getSize() << endl; 
+	L1.printArray();
+	L1.remove(2);
+	L1.printArray();
+	L1.insert(2, G);
+	L1.printArray();
 	return 0;
 }
 
