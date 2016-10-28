@@ -7,7 +7,7 @@ using namespace std;
 
 void printList( list<int> h)
 {
-	for(list<int>::iterator i=h.begin(); i!=h.end(); ++i)
+	for(list<int>::iterator i=h.begin(); i!=h.end(); i++)
 		cout << *i << " ";
 	cout << endl;
 }
