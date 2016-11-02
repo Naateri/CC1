@@ -3,7 +3,8 @@ protected:
 	PointArray *array;
 	int instances;
 public:
-	double area();
+	Polygon();
+	virtual const double area();// = 0;
 	int getNumPolygons();
 	int getNumSides();
 	Point *getPoints();
