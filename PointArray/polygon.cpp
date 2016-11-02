@@ -3,9 +3,13 @@
 #include "pointarray.h"
 #include "polygon.h"
 using namespace std;
-double Polygon::area(){
-	;
+Polygon::Polygon(){
+	this->instances = 0;
+	this->array = PointArray array(); //FIX
 }
+const double Polygon::area() = 0;/*{ FIX
+	return 0;
+}*/
 int Polygon::getNumPolygons(){
 	return instances;
 }
