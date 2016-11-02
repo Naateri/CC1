@@ -22,13 +22,15 @@ int main () {
 	Point list[] = {A,B,C};
 	Vector vlist[] = {AB, CD, EF};
 	PointArray L1(list, 3);
+	PointArray L2(); //FIXXXXXXXXXXXX
 	VectorArray V1(vlist, 3);
 	cout << L1.getSize() << endl;
 	L1.push_back(D);
-	//cout << L1.getSize() << endl;
 	L1.printArray();
+	L2.push_back(G); //FIX
+	cout << "L2: " << endl;
+	L2.printArray();
 	L1.remove(2);
-	//cout << L1.getSize() << endl; 
 	L1.printArray();
 	L1.insert(2, G);
 	L1.printArray();
@@ -48,3 +50,4 @@ int main () {
 	
 	return 0;
 }
+
