@@ -19,7 +19,7 @@ void PointArray::resize(int x){
 	point = a;
 }
 
-PointArray::PointArray(){
+PointArray::PointArray(){ //FIX
 	this->_size = 0;
 	this->point = new Point[0];
 	//this->point = NULL;
@@ -42,7 +42,7 @@ PointArray::PointArray(PointArray &pv){
 }
 
 PointArray::~PointArray(){
-	_size = 0;
+	this->_size = 0;
 	delete [] point;
 }
 void PointArray::push_back(Point &p){
