@@ -3,14 +3,17 @@
 #include "pointarray.h"
 #include "polygon.h"
 using namespace std;
+
+int Polygon::instances = 0;
+
 Polygon::Polygon(){
 	Point list[0];
 	PointArray PA(list, 0);
 	this -> array = PA;
-	this->instances = 0;
+	this->instances++;
 }
 /*const double Polygon::area() = 0;{ 
-	return 0;
+return 0;
 }*/
 Polygon::Polygon(Polygon &p){
 	int i;
