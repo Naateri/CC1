@@ -1,10 +1,12 @@
 class Polygon{
 protected:
-	PointArray *array;
+	PointArray array;
 	int instances;
 public:
 	Polygon();
-	virtual const double area();// = 0;
+	Polygon(Polygon &p);
+	Polygon(Point Pls[], int i);
+	virtual double area() = 0; //no need to declare it in polygon.cpp
 	int getNumPolygons();
 	int getNumSides();
 	Point *getPoints();
