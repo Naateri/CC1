@@ -14,4 +14,7 @@ public:
 	int getSize();
 	void clear();
 	void printArray();
+	void getList(Point list[]);
+	Point *get(int position); //CHECK IT
+	void modifyList(Point points[]);
 };
