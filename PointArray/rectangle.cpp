@@ -18,7 +18,7 @@ Rectangle::Rectangle(int a, int b, int c, int d){
 	Point list[2] = {Low, High};
 	PointArray Rekt(list, 2);
 	this->array = Rekt;
-	this->instances = 2;
+	this->instances++;
 }
 double Rectangle::area(){
 	int height, width;
