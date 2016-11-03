@@ -6,7 +6,7 @@
 #include<stdlib.h>
 
 Rectangle::Rectangle(Point Low, Point High){
-	this->instances = 2;
+	this->instances++;
 	Point list[2] = {Low, High};
 	PointArray Rekt(list, 2);
 	this->array = Rekt;
