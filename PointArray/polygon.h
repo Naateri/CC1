@@ -1,7 +1,7 @@
 class Polygon{
 protected:
 	PointArray array;
-	int instances;
+	static int instances;
 public:
 	Polygon();
 	Polygon(Polygon &p);
