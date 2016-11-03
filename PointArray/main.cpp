@@ -4,6 +4,8 @@
 #include "vector.h"
 #include "vectorarray.h"
 #include "polygon.h"
+#include "rectangle.h"
+#include "triangle.h"
 using namespace std;
 
 int main () {
@@ -20,9 +22,10 @@ int main () {
 	Vector CG(C, G);
 	Vector BE(B, E);
 	Point list[] = {A,B,C};
+	Point list2[0];
 	Vector vlist[] = {AB, CD, EF};
 	PointArray L1(list, 3);
-	PointArray L2(); //FIXXXXXXXXXXXX
+	PointArray L2(list2,0); //FIXXXXXXXXXXXX
 	VectorArray V1(vlist, 3);
 	cout << L1.getSize() << endl;
 	L1.push_back(D);
@@ -30,10 +33,12 @@ int main () {
 	L2.push_back(G); //FIX
 	cout << "L2: " << endl;
 	L2.printArray();
+	cout << "Back to L1: " << endl;
 	L1.remove(2);
 	L1.printArray();
 	L1.insert(2, G);
 	L1.printArray();
+	//cout << L1.get(0) << endl;
 	L1.clear();
 	L1.printArray();
 	V1.printVArray();
@@ -46,8 +51,11 @@ int main () {
 	cout << "Size: " <<  V1.getSize() << endl;
 	V1.clear();
 	V1.printVArray();
-	
+	Point Low(0,0); Point High(4,3);
+	/*Rectangle Rekt(Low, High);
+	cout << "Area: " << Rekt.area();*/
+	Triangle Test(Low,High,A);
+	cout << Test.area();
 	
 	return 0;
 }
-
