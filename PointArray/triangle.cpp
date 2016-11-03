@@ -6,7 +6,7 @@
 #include "polygon.h"
 #include "triangle.h"
 Triangle::Triangle(Point A, Point B, Point C){
-	this -> instances = 3;
+	this -> instances++;
 	Point a[3] = {A, B, C};
 	PointArray Array(a, 3);
 	this -> array = Array;
@@ -25,4 +25,5 @@ double Triangle::area(){
 	c = AC.distancia();
 	s = (a+b+c)/2;
 	return sqrt(s*(s-a)*(s-b)*(s-c));
+	
 }
