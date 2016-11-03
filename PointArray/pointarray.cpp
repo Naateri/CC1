@@ -21,7 +21,9 @@ void PointArray::resize(int x){
 
 PointArray::PointArray(){ //FIX
 	this->_size = 0;
-	this->point = new Point[0];
+	Point *a;
+	a = new Point[0];
+	this->point = a;
 	//this->point = NULL;
 }
 
@@ -104,3 +106,28 @@ void PointArray::printArray(){
 		}
 	}
 }
+void PointArray::getList(Point list[]){
+	int i;
+	for (i = 0; i<_size; i++){
+		list[i] = point[i];
+	}
+}
+
+Point* PointArray::get(int position){
+	int i = 0;
+	for (i; i<position; i++, point++){
+		;
+	}
+	return point;
+}
+void PointArray::modifyList(Point points[]){ //modify current list with one that you have that is the same size of current list
+	int i;
+	Point *a;
+	a = new Point[_size];
+	for (i = 0; i<_size; i++){
+		a[i] = point[i];
+	}
+	delete [] point;
+	point = a;
+}
+
