@@ -144,21 +144,21 @@ void contarBombitas(string *mat[], int *matriz[], int fil, int col){ //mat = vis
 	}
 }
 
-int pedirCoordX(string msj, int fil){
+int pedirCoordX(string msj, int col){
 	int xd;
 	cout << msj << endl;
 	cin >> xd;
-	if (xd<0 || xd >fil){
-		return pedirCoordX("Ingrese un número válido: ", fil);
+	if (xd<0 || xd>=col){
+		return pedirCoordX("Ingrese un número válido: ",col);
 	}
 	return xd;
 }
-int pedirCoordY(string msj, int col){
+int pedirCoordY(string msj, int fil){
 	int y;
 	cout << msj << endl;
 	cin >> y;
-	if (y < 0 || y > col){
-		return pedirCoordY("Ingrese un número válido: ", col);
+	if (y < 0 || y >= fil){
+		return pedirCoordY("Ingrese un número válido: ", fil);
 	}
 	return y;
 }
@@ -197,15 +197,18 @@ case 9:
 case 10:
 	return "_";
 	break;
+default:
+	return "Lol no clue m8";
+	break;
 	}
 }
 void revelar(int x, int y, string *mat[], string *mat1[], int *mat2[], int fil, int col){
 	//mat = visual, mat1 = A,B; mat2 = numeritos
-	if (mat2[x][y] == 10){
+/*	if (mat2[x][y] == 10){
 		imprimirMatLet(mat, fil, col);
 		cout << "Usted ha perdido!" << endl;
 		exit(69);
-	} else {
+	} else {*/
 	if (mat2[x][y] == 0){
 		if ((x>0) && (x < fil)){
 			if ((y>0) && (mat1[x-1][y-1] == "A")){
@@ -298,7 +301,7 @@ void revelar(int x, int y, string *mat[], string *mat1[], int *mat2[], int fil, 
 	}
 	mat1[x][y] = "B";
 	mat[x][y] = convierte(mat2[x][y]);
-}
+//}
 }
 
 bool ponerMina(){
@@ -307,8 +310,10 @@ bool ponerMina(){
 	cin >> asu;
 	if (asu == 's' || asu == 'S'){
 		return true;
-	} else {
+	} else if (asu == 'n' || asu == 'N') {
 		return false;
+	} else {
+		return ponerMina();
 	}
 }
 int contarM(string *mat[], int fil, int col){
@@ -337,7 +342,7 @@ void matrizCompleta(string *mat0[], int *mat1[], string *mat2[], int fil, int co
 	}
 }
 int main() {
-	int col, fil, minas, x, y, score, contarMi;
+	int col, fil, minas, x, y, score, eme;
 	int *mat1[20];
 	bool xd;
 	//mat 1 = numeritos
@@ -354,47 +359,69 @@ int main() {
 	insertBombitas(mat2, minas, fil, col);
 	contarBombitas(mat2, mat1, fil, col);
 	imprimirMatLet(mat0, fil, col);
-	imprimirMatLet(mat2, fil, col);
-	imprimirMatNum(mat1, fil, col);
-	contarMi = contarM(mat0, fil, col);
-	while ((score < minas)){ //agregar condición para que usuario no marque todas las M's y gane pe
-		
-	x = pedirCoordX("Ingrese la coordenada X: ", fil);
-	y = pedirCoordY("Ingrese la coordenada Y: ", col);
-	do{
+	//imprimirMatLet(mat2, fil, col);
+	//imprimirMatNum(mat1, fil, col);
+	eme = 0;
+	while ((score < minas)){
+	eme = contarM(mat0, fil, col);
+	if (eme > minas){
+		cout << "Usted ya ha marcado más minas de las que hay en el juego." << endl;
+		cout << "Desmarque las que vea son incorrectas o perderá por marcar un exceso de minas." << endl;
+	}
+	x = pedirCoordX("Ingrese la coordenada X: ", col);
+	y = pedirCoordY("Ingrese la coordenada Y: ", fil);
+	while((mat0[x][y] != "_") && (mat0[x][y] != "*") && (mat0[x][y] != "M")){
 		cout << "Usted ya pasó por este punto. Ingrese otro." << endl;
-		x = pedirCoordX("Ingrese la coordenada X: ", fil);
-		y = pedirCoordY("Ingrese la coordenada Y: ", col);
-	} while((mat0[x][y] != "_") && (mat0[x][y] != "*"));
+		x = pedirCoordX("Ingrese la coordenada X: ", col);
+		y = pedirCoordY("Ingrese la coordenada Y: ", fil);
+	}
+		
 	xd = ponerMina();
 	if (xd){
 		if (mat0[x][y] == "M"){
 			mat0[x][y] = "_"; //desmarcando
+			if (mat1[x][y] == 10){
+				score--;
+			}
 			imprimirMatLet(mat0, fil, col);
 		} else {
 			mat0[x][y] = "M";
-			if (mat1[x][y] = 10){
+			if (mat1[x][y] == 10){
 				score++;
 			}
 			imprimirMatLet(mat0, fil, col);
 		}
 		
 	} else {
+		if (mat1[x][y] != 10){
 		revelar(x, y, mat0, mat3, mat1, fil, col);
 		imprimirMatLet(mat0, fil, col);
+		} else {
+			matrizCompleta(mat0, mat1, mat2, fil, col);
+			imprimirMatLet(mat0, fil, col);
+			cout << "Usted ha perdido!" << endl;
+			exit(69);
+		}
 	}
 	} //end while 
 	if ((score == minas)){//&&
+		//eme = contarM(mat0, fil, col);
+		if (eme > minas){ //el gil ha marcado más minas de las que hay 
+			cout << "Usted ha puesto más minas que las que hay en la partida." << endl;
+			cout << "Así cualquiera pe. Has perdido... por gil." << endl;
+			exit(80085);
+		} else {
 		matrizCompleta(mat0, mat1, mat2, fil, col);
 		imprimirMatLet(mat0, fil, col);
 		cout << "Ustead ha ganado!" << endl;
 		exit(420);
+		}
 	}
 	return 0;
 }
 
-
-//mejorar revelar, matriz completa, revisar contador de bombitas, falta agregar
-//unas cosas pero ya casi está op pe
-//revisar condiciones para que acabe el juego
+//Se podría agregar tableros por defecto
+//Agregar opción de volver a jugar
+//^una vez agregado eso, ver si se puede agregar un timer para guardarlo como score
+//O que el score sea la cantidad de buscaminas solucionados seguidos (racha->streak)
 
