@@ -19,7 +19,7 @@ int inputnrofil(string msj){
 	cin >> fil;
 	cout << endl;
 	if (fil<=0 || fil>20){
-		return inputnrocol("Ingrese un entero positivo menor a 20: ");
+		return inputnrofil("Ingrese un entero positivo menor a 20: ");
 	}
 	return fil;
 }
