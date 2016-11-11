@@ -12,6 +12,9 @@ Triangle::Triangle(Point A, Point B, Point C){
 	this -> array = Array;
 	
 }
+Triangle::Triangle(){
+	this->instances++;
+}
 
 double Triangle::area(){
 	double a, b, c, s;
@@ -25,5 +28,4 @@ double Triangle::area(){
 	c = AC.distancia();
 	s = (a+b+c)/2;
 	return sqrt(s*(s-a)*(s-b)*(s-c));
-	
 }
