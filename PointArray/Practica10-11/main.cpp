@@ -14,6 +14,7 @@ int main () {
 	Rectangle *rect; //ejercicio 3: cast
 	Polygon* MyRect = rect;
 	rect = dynamic_cast<Rectangle*>(MyRect);
+	//rect = dynamic_cast<Triangle*>(MyRect);
 	Rectangle* rekt = rect;
 	rect = dynamic_cast<Rectangle*>(MyTria);
 	if (rect == NULL){
